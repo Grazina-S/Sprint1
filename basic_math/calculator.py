@@ -1,3 +1,6 @@
+from decimal import Decimal  # Needed to avoid problems with floating point
+
+
 class Calculator:
     """A simple calculator for basic arithmetic operations"""
 
@@ -8,20 +11,38 @@ class Calculator:
             self.memory += number
         return self.memory
 
-    def subtract(self, *numbers: float) -> float:
-        for number in numbers:
-            self.memory -= number
-        return self.memory
+    def substract(self, *numbers: float) -> float:
+        if self.memory == 0.0 and len(numbers) > 1:
+            self.memory = Decimal(str(numbers[0]))
+            for number in numbers[1:]:
+                self.memory -= Decimal(str(number))
+        else:
+            for number in numbers:
+                self.memory -= Decimal(str(number))
+        return float(self.memory)
 
     def multiply(self, *numbers: float) -> float:
-        for number in numbers:
-            self.memory *= number
-        return self.memory
+        if self.memory == 0.0 and len(numbers) > 1:
+            self.memory = Decimal(str(numbers[0]))
+            for number in numbers[1:]:
+                self.memory *= Decimal(str(number))
+        else:
+            for number in numbers:
+                self.memory *= Decimal(str(number))
+        return float(self.memory)
 
     def divide(self, *numbers: float) -> float:
-        for number in numbers:
-            self.memory /= number
-        return self.memory
+        if any(number == 0.0 for number in numbers):
+            raise ZeroDivisionError("You can't divide by 0!")
+
+        if self.memory == 0.0 and len(numbers) > 1:
+            self.memory = Decimal(str(numbers[0]))
+            for number in numbers[1:]:
+                self.memory /= Decimal(str(number))
+        else:
+            for number in numbers:
+                self.memory /= Decimal(str(number))
+        return float(self.memory)
 
     def root(self, number: float = None, root_degree: float = None) -> float:
         """If root degree is not entered,
