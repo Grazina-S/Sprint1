@@ -22,19 +22,15 @@ class Calculator:
             self.memory /= number
         return self.memory
     
-    def root(self, number: float) -> float:
-        self.memory **= (1 / number)
+    def root(self, number: float = None, root_degree: float = None) -> float:
+        """If root degree is not entered, function makes square root by default"""
+        if number is None:
+            number = self.memory
+        if root_degree is None:
+            root_degree = 2         
+        self.memory = number ** (1 / root_degree)        
         return self.memory
     
-    def reset(self):
+    def reset(self) -> None:
+        """Resets calculator memory back to 0"""
         self.memory = 0.0
-    
-    
-        
-    
-    
-    
-    
-# calculator = Calculator()
-# result = calculator.add(7,3)
-# print(result)
