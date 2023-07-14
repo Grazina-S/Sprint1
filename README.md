@@ -3,7 +3,7 @@
 The calculator performs basic arithmetical operations and stores the result of the last operation in memory. Default memory is 0.
 
 ## Installation
-pip install basic_math
+pip install --index-url https://test.pypi.org/simple/ my_basic_calculator
 
 ## Usage
 
