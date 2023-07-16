@@ -6,14 +6,9 @@ The calculator performs basic arithmetical operations and stores the result of t
 pip install --index-url https://test.pypi.org/simple/ my_basic_calculator
 
 ## Usage
-import it:  
-from my_basic_calculator.calculator import Calculator  
 
-then create an instance of Calculator class and use the five available functions:
-
-- add - add any amount of numbers
-- substract/divide/multiply - substracts/divide/multiply any amount of numbers. If memory = 0 it will  take the first number from the list of arguments and use it as default. If only one argument is entered, default will be 0 or the result of previous operation.
-- take nth degree root - takes two arguments, number and a degree of the root. If no degree is entered, it will take square root. If no number is entered, it will use 0 or the result of previous operation
-- reset - reset calculator memory to 0
+- add/subtract/divide/multiply - add/subtract/divide/multiply any amount of numbers. Keep in mind that starting memory is 0!
+- take nth degree root - takes one arguments,  a degree of the root. 
+- reset - reset calculator memory back  to 0
 
   

@@ -1,6 +1,6 @@
 import unittest
 
-from my_basic_calculator.calculator import Calculator
+from my_basic_calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
@@ -9,25 +9,20 @@ class TestCalculator(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
 
-    def test_add(self):
-        result = self.calculator.add(3.3, 2.1, 21.05)
-        self.assertAlmostEqual(result, 26.45, places=6)
-
-    def test_substract(self):
-        result = self.calculator.substract(0.3, 0.1)
-        self.assertAlmostEqual(result, 0.2, places=6)
-
-    def test_multiply(self):
-        result = self.calculator.multiply(0.1, 0.2)
-        self.assertAlmostEqual(result, 0.02, places=6)
-
-    def test_divide(self):
-        result = self.calculator.divide(10, 2.5, 1.2)
-        self.assertAlmostEqual(result, 3.333333, places=6)
-
-    def test_root(self):
-        result = self.calculator.root(7, 2)
-        self.assertAlmostEqual(result, 2.645751, places=6)
+    def test_all(self):
+        result = self.calculator.add(2, 6)  # Test addition
+        self.assertAlmostEqual(result, 8.0, places=6)
+        result = self.calculator.root(3)  # Test root
+        self.assertAlmostEqual(result, 2.0, places=6)
+        result = self.calculator.subtract(-7)  # Test subtract
+        self.assertAlmostEqual(result, 9.0, places=6)
+        result = self.calculator.multiply(2, 3)  # Test multiply
+        self.assertAlmostEqual(result, 54.0, places=6)
+        result = self.calculator.divide(6)  # Test divide
+        self.assertAlmostEqual(result, 9.0, places=6)
+        self.calculator.reset()
+        result = self.calculator.multiply(2.15651)
+        self.assertAlmostEqual(result, 0.0, places=6)  # Test if reset to 0.0
 
 
 if __name__ == "__main__":
